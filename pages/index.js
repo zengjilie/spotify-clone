@@ -1,12 +1,15 @@
 import Head from 'next/head'
 import Sidebar from '../components/Sidebar'
+import Center from '../components/Center'
 
 export default function Home() {
   return (
-    <div className="">
-      <main className='bg-black h-screen'>
-        <Sidebar/>  
+    <div className="bg-black h-screen">
+      <main className='flex'>
+        <Sidebar/> 
+        <Center/>
       </main> 
     </div>
   )
 }
+
