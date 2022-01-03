@@ -1,7 +1,26 @@
+import { currentTrackIdState, isPlayState } from '../atoms/songAtom';
+import useSpotify from '../hooks/useSpotify';
 import millisToMinutesAndSeconds from '../lib/time';
+import {useRecoilState} from 'recoil';
+
+//use song comp to change the currenttrackid and isplaying
 function Song({track, index}) {
+    const[currentTrackId, setCurrentTrackId] = useRecoilState(currentTrackIdState);
+    const[isPlaying, setIsPlaying] = useRecoilState(isPlayState);
+    const spotifyApi = useSpotify();
+
+    function play (){
+        setCurrentTrackId(track.track.id);
+        setIsPlaying(true);
+        spotifyApi.play({
+            uris:[track.track.uri]
+        })
+    }
     return (
-        <div className="grid grid-cols-2 text-gray-500 px-5 py-4 hover:bg-gray-900 rounded-lg cursor-pointer" >
+        <div 
+            className="grid grid-cols-2 text-gray-500 px-5 py-4 hover:bg-gray-900 rounded-lg cursor-pointer" 
+            onClick = {play}
+        >
             <div className="flex items-center space-x-4">
                 <p>{index + 1}</p>
                 <img
