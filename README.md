@@ -21,3 +21,5 @@ JWT_SECRET
 Demo video: https://youtu.be/tM8pquJBciE
 
 ![screenshot](./spotify-clone.png)
+
+![screenshot](./spotify.gif)
